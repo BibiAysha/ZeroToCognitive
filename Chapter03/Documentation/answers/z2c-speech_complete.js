@@ -32,6 +32,7 @@ function initPage ()
         _mic.removeClass("mic_enabled");
         _stop.addClass("mic_enabled");
         _stop.removeClass("mic_disabled");
+		//excutes the following fuction when speech is retrived 
         $.when($.get('/api/speech-to-text/token')).done(
           function (token) {
             stream = WatsonSpeech.SpeechToText.recognizeMicrophone({
@@ -42,7 +43,7 @@ function initPage ()
           });
         }
       });
-
+//function to stop microphone
   _stop.on("click",  function() {
           console.log("Stopping text-to-speech service...");
           if (stream != undefined) {stream.stop(); }
